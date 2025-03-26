@@ -13,12 +13,14 @@ include(${wxWidgets_USE_FILE})
 set(SOURCES
     src/passwordgen_app.cpp
     src/passwordgen_frame.cpp
+    src/passwordgen.cpp
 )
 
 # Set headers
 set(HEADERS
     src/passwordgen_app.h
     src/passwordgen_frame.h
+    src/passwordgen.h
 )
 
 # Create executable
