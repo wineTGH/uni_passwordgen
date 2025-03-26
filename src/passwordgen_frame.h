@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
+#include <wx/clipbrd.h>
 
 class PasswordGenFrame : public wxFrame
 {
@@ -23,6 +24,7 @@ private:
 
     // Event handlers
     void OnGenerateButtonClick(wxCommandEvent& event);
+    void OnPasswordResultClick(wxMouseEvent& event);
 };
 
 #endif // PASSWORDGEN_FRAME_H

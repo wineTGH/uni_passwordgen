@@ -41,21 +41,25 @@ void PasswordGenFrame::CreateControls()
     // Right column controls
     auto* rightColumn = new wxBoxSizer(wxVERTICAL);
 
-    m_passwordResult = new wxStaticText(this, wxID_ANY, "");
+    m_passwordResult = new wxStaticText(this, wxID_ANY, wxString::FromUTF8("Нажмите \"сгенерировать\"!"));
     m_passwordResult->SetFont(wxFontInfo().Bold());
+    m_passwordResult->SetCursor(wxCURSOR_HAND);
+    m_passwordResult->SetToolTip(wxString::FromUTF8("Нажмите чтобы скопировать в буфер обмена"));
+    
     rightColumn->Add(m_passwordResult, 1, wxALL | wxEXPAND, 5);
-
+    
     m_generateBtn = new wxButton(this, wxID_ANY, wxString::FromUTF8("Сгенерировать"));
     rightColumn->Add(m_generateBtn, 0, wxALL | wxALIGN_CENTER, 5);
-
+    
     mainSizer->Add(rightColumn, 0, wxEXPAND);
-
+    
     SetSizerAndFit(mainSizer);
 }
 
 void PasswordGenFrame::BindEvents()
 {
     m_generateBtn->Bind(wxEVT_BUTTON, &PasswordGenFrame::OnGenerateButtonClick, this);
+    m_passwordResult->Bind(wxEVT_LEFT_DOWN, &PasswordGenFrame::OnPasswordResultClick, this);
 }
 
 void PasswordGenFrame::OnGenerateButtonClick(wxCommandEvent& event)
@@ -68,4 +72,23 @@ void PasswordGenFrame::OnGenerateButtonClick(wxCommandEvent& event)
     auto new_password = PasswordGenerator::generate_password(length, useNumbers, useSpecialSymb, useRandomRegisterSymb);
     m_passwordResult->SetLabelText(wxString::FromUTF8(new_password));
     Layout();
+    event.Skip();
+}
+
+void PasswordGenFrame::OnPasswordResultClick(wxMouseEvent& event)
+{
+    if (!m_passwordResult->GetLabel().IsEmpty())
+    {
+        if (wxTheClipboard->Open())
+        {
+            wxTheClipboard->SetData(new wxTextDataObject(m_passwordResult->GetLabel()));
+            wxTheClipboard->Close();
+            
+            wxMessageBox(wxString::FromUTF8("Пароль скопирован!"), 
+                        wxString::FromUTF8("Успех"), 
+                        wxOK | wxICON_INFORMATION, 
+                        this);
+        }
+    }
+    event.Skip();
 }
