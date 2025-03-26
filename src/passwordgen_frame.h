@@ -13,7 +13,7 @@ class PasswordGenFrame : public wxFrame {
     void CreateControls();
     void BindEvents();
 
-    // UI Controls
+    // UI Элементы
     wxSpinCtrl* m_passwordLenInput;
     wxCheckBox* m_useNumbersBox;
     wxCheckBox* m_useSpecialSymbBox;
@@ -21,7 +21,7 @@ class PasswordGenFrame : public wxFrame {
     wxStaticText* m_passwordResult;
     wxButton* m_generateBtn;
 
-    // Event handlers
+    // Обработчики событий
     void OnGenerateButtonClick(wxCommandEvent& event);
     void OnPasswordResultClick(wxMouseEvent& event);
 };

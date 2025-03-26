@@ -10,7 +10,6 @@ std::string PasswordGenerator::generate_password(int length, bool use_digits,
 
     std::string char_pool = lowercase;
 
-    // Добавляем символы в зависимости от флагов
     if (random_case) {
         char_pool += uppercase;
     }
