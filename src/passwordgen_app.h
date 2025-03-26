@@ -3,10 +3,9 @@
 
 #include <wx/wx.h>
 
-class PasswordGenApp : public wxApp
-{
-public:
+class PasswordGenApp : public wxApp {
+   public:
     virtual bool OnInit() override;
 };
 
-#endif // PASSWORDGEN_APP_H
+#endif  // PASSWORDGEN_APP_H

@@ -1,16 +1,15 @@
 #ifndef PASSWORDGEN_FRAME_H
 #define PASSWORDGEN_FRAME_H
 
-#include <wx/wx.h>
-#include <wx/spinctrl.h>
 #include <wx/clipbrd.h>
+#include <wx/spinctrl.h>
+#include <wx/wx.h>
 
-class PasswordGenFrame : public wxFrame
-{
-public:
+class PasswordGenFrame : public wxFrame {
+   public:
     PasswordGenFrame();
 
-private:
+   private:
     void CreateControls();
     void BindEvents();
 
@@ -27,4 +26,4 @@ private:
     void OnPasswordResultClick(wxMouseEvent& event);
 };
 
-#endif // PASSWORDGEN_FRAME_H
+#endif  // PASSWORDGEN_FRAME_H
