@@ -1,43 +1,4 @@
-#include <wx/wxprec.h>
-#include <wx/spinctrl.h>
-
-#ifndef WX_PRECOMP
-    #include <wx/wx.h>
-#endif
-
-class PasswordGenApp : public wxApp
-{
-public:
-    virtual bool OnInit() override;
-};
-
-class PasswordGenFrame : public wxFrame
-{
-public:
-    PasswordGenFrame();
-
-private:
-    void CreateControls();
-    void BindEvents();
-
-    wxSpinCtrl* m_passwordLenInput;
-    wxCheckBox* m_useNumbersBox;
-    wxCheckBox* m_useSpecialSymbBox;
-    wxCheckBox* m_useRandomRegisterBox;
-    wxStaticText* m_passwordResult;
-    wxButton* m_generateBtn;
-
-    void OnGenerateButtonClick(wxCommandEvent& event);
-};
-
-wxIMPLEMENT_APP(PasswordGenApp);
-
-bool PasswordGenApp::OnInit()
-{
-    auto* frame = new PasswordGenFrame();
-    frame->Show(true);
-    return true;
-}
+#include "passwordgen_frame.h"
 
 PasswordGenFrame::PasswordGenFrame()
     : wxFrame(nullptr, wxID_ANY, wxString::FromUTF8("Генератор паролей"))
