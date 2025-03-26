@@ -1,4 +1,5 @@
 #include "passwordgen_frame.h"
+#include "passwordgen.h"
 
 PasswordGenFrame::PasswordGenFrame()
     : wxFrame(nullptr, wxID_ANY, wxString::FromUTF8("Генератор паролей"))
@@ -59,6 +60,12 @@ void PasswordGenFrame::BindEvents()
 
 void PasswordGenFrame::OnGenerateButtonClick(wxCommandEvent& event)
 {
-    m_passwordResult->SetLabelText(wxString::FromUTF8("Clicked!"));
+    int length = m_passwordLenInput->GetValue();
+    bool useNumbers = m_useNumbersBox->GetValue();
+    bool useSpecialSymb = m_useSpecialSymbBox->GetValue();
+    bool useRandomRegisterSymb = m_useRandomRegisterBox->GetValue();
+
+    auto new_password = PasswordGenerator::generate_password(length, useNumbers, useSpecialSymb, useRandomRegisterSymb);
+    m_passwordResult->SetLabelText(wxString::FromUTF8(new_password));
     Layout();
 }

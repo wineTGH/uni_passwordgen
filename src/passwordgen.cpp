@@ -1,6 +1,6 @@
 #include "passwordgen.h"
 
-static std::string PasswordGenerator::generate_password(int length, bool use_digits, bool use_special_chars, bool random_case) {
+std::string PasswordGenerator::generate_password(int length, bool use_digits, bool use_special_chars, bool random_case) {
     const std::string lowercase = "abcdefghijklmnopqrstuvwxyz";
     const std::string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const std::string digits = "0123456789";

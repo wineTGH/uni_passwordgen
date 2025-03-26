@@ -7,7 +7,7 @@
 #include <climits>
 
 namespace PasswordGenerator {
-    static std::string generate_password(int length, bool use_digits, bool use_special_chars, bool random_case);
+    std::string generate_password(int length, bool use_digits, bool use_special_chars, bool random_case);
 }
 
 #endif
