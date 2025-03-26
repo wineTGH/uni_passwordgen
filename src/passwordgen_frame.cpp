@@ -13,12 +13,10 @@ PasswordGenFrame::PasswordGenFrame()
 void PasswordGenFrame::CreateControls() {
     SetSizeHints(wxDefaultSize, wxDefaultSize);
 
-    // Main sizer with 2 columns
     auto* mainSizer = new wxFlexGridSizer(0, 2, 0, 0);
     mainSizer->AddGrowableCol(0, 1);
     mainSizer->SetFlexibleDirection(wxBOTH);
 
-    // Left column controls
     auto* leftColumn = new wxBoxSizer(wxVERTICAL);
 
     constexpr int MIN_LEN = 8, MAX_LEN = 25, DEFAULT_LEN = 8;
@@ -41,7 +39,6 @@ void PasswordGenFrame::CreateControls() {
 
     mainSizer->Add(leftColumn, 1, wxEXPAND);
 
-    // Right column controls
     auto* rightColumn = new wxBoxSizer(wxVERTICAL);
 
     m_passwordResult = new wxStaticText(
