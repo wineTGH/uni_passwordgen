@@ -1,4 +1,5 @@
 #include "passwordgen.h"
+#include <random>
 
 std::string PasswordGenerator::generate_password(int length, bool use_digits,
                                                  bool use_special_chars,
